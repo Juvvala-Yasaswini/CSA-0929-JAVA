@@ -1,0 +1,93 @@
+
+import java.util.Scanner;
+
+class User {
+    private String name;
+    private String role;
+
+    public User(String name, String role) {
+        this.name = name;
+        this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+}
+
+class College {
+    private int totalUsers;
+    private int studentUsers;
+    private int staffUsers;
+    private int nonTeachingStaff;
+
+    public College() {
+        this.totalUsers = 0;
+        this.studentUsers = 0;
+        this.staffUsers = 0;
+        this.nonTeachingStaff = 0;
+    }
+
+    public void addUser(User user) {
+        totalUsers++;
+        if (user.getRole().equalsIgnoreCase("student")) {
+            studentUsers++;
+        } else if (user.getRole().equalsIgnoreCase("staff")) {
+            staffUsers++;
+            if (staffUsers % 3 == 0) {
+                nonTeachingStaff++;
+            }
+        }
+    }
+
+    public void displayStatistics() {
+        System.out.println("Total Users: " + totalUsers);
+        System.out.println("Student Users: " + studentUsers);
+        System.out.println("Staff Users: " + staffUsers);
+        System.out.println("Non-Teaching Staff Users: " + nonTeachingStaff);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        College college = new College();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of users: ");
+        int numberOfUsers = scanner.nextInt();
+        scanner.nextLine(); 
+
+        for (int i = 1; i <= numberOfUsers; i++) {
+            System.out.println("Enter details for user " + i + ":");
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Role (Student/Staff): ");
+            String role = scanner.nextLine();
+            college.addUser(new User(name, role));
+        }
+
+        college.displayStatistics();
+
+        scanner.close();
+    }
+}
+
+
+output:
+
+Enter the number of users: 2
+Enter details for user 1:
+Name: yashu
+Role (Student/Staff): student
+Enter details for user 2:
+Name: sasi
+Role (Student/Staff): staff
+Total Users: 2
+Student Users: 1
+Staff Users: 1
+Non-Teaching Staff Users: 0
+
