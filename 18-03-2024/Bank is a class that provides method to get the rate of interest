@@ -1,0 +1,47 @@
+class Bank {
+    public double getRateOfInterest() {
+        return 0;
+    }
+}
+
+class SBI extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 8.4;
+    }
+}
+
+class ICICI extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 7.3;
+    }
+}
+
+class AXIS extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 9.7;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SBI sbi = new SBI();
+        ICICI icici = new ICICI();
+        AXIS axis = new AXIS();
+
+        System.out.println("Rate of interest from SBI: " + sbi.getRateOfInterest() + "%");
+        System.out.println("Rate of interest from ICICI: " + icici.getRateOfInterest() + "%");
+        System.out.println("Rate of interest from AXIS: " + axis.getRateOfInterest() + "%");
+    }
+}
+
+
+output:
+
+Rate of interest from SBI: 8.4%
+Rate of interest from ICICI: 7.3%
+Rate of interest from AXIS: 9.7%
+
+
