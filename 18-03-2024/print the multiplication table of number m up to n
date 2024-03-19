@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main3 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter the number: ");
+        int m = scanner.nextInt();
+
+
+        System.out.print("Enter the limit (n): ");
+        int n = scanner.nextInt();
+
+
+        System.out.println("Multiplication table of " + m + " up to " + n + ":");
+        for (int i = 1; i <= n; i++) {
+            System.out.println(m + " * " + i + " = " + (m * i));
+        }
+
+        scanner.close();
+    }
+}
+
+
+output:
+
+Enter the limit (n): 5
+Multiplication table of 34 up to 5:
+34 * 1 = 34
+34 * 2 = 68
+34 * 3 = 102
+34 * 4 = 136
+34 * 5 = 170
+
