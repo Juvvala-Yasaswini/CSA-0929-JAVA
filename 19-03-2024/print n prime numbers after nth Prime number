@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of N: ");
+        int N = scanner.nextInt();
+
+        int nthPrime = getNthPrime(N);
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        printNPrimeNumbersAfter(nthPrime, n);
+
+        scanner.close();
+    }
+
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static int getNthPrime(int n) {
+        int count = 0;
+        int num = 1;
+        while (count < n) {
+            num++;
+            if (isPrime(num)) {
+                count++;
+            }
+        }
+        return num;
+    }
+
+   
+    public static void printNPrimeNumbersAfter(int nthPrime, int n) {
+        System.out.println("Prime numbers after the " + nthPrime + "th prime number:");
+        int count = 0;
+        int num = nthPrime + 1;
+        while (count < n) {
+            if (isPrime(num)) {
+                System.out.println(num);
+                count++;
+            }
+            num++;
+        }
+    }
+}
+
+
+output:
+Enter the value of N: 5
+Enter the value of n: 4
+Prime numbers after the 11th prime number:
+13
+17
+19
+23
