@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+class BankAccount {
+    private String depositorName;
+    private int accountNumber;
+    private String accountType;
+    private double balance;
+
+
+    public BankAccount(String depositorName, int accountNumber, String accountType) {
+        this.depositorName = depositorName;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balance = 500.00;
+    }
+
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Amount deposited successfully.");
+    }
+
+
+    public void withdraw(double amount) {
+        if (balance - amount >= 500.00) {
+            balance -= amount;
+            System.out.println("Amount withdrawn successfully.");
+        } else {
+            System.out.println("Insufficient balance. Withdrawal failed.");
+        }
+    }
+
+
+    public void displayBalance() {
+        System.out.println("Account Details:");
+        System.out.println("Depositor Name: " + depositorName);
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Type: " + accountType);
+        System.out.println("Balance: Rs." + balance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("Enter depositor name:");
+        String depositorName = scanner.nextLine();
+        System.out.println("Enter account number:");
+        int accountNumber = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.println("Enter account type (Savings/Current):");
+        String accountType = scanner.nextLine();
+
+
+        BankAccount account = new BankAccount(depositorName, accountNumber, accountType);
+
+
+        account.deposit(1000.00);
+        account.withdraw(200.00);
+
+        
+        account.displayBalance();
+
+        scanner.close();
+    }
+}
+
+
+output:
+
+Enter depositor name:
+yashu
+Enter account number:
+17253
+Enter account type (Savings/Current):
+savings
+Amount deposited successfully.
+Amount withdrawn successfully.
