@@ -1,0 +1,75 @@
+class MultiplicationThread extends Thread {
+    private int number;
+
+    public MultiplicationThread(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Multiplication table for " + number + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " * " + i + " = " + (number * i));
+            try {
+
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Thread for " + number + " multiplication table completed.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        MultiplicationThread thread5 = new MultiplicationThread(5);
+        System.out.println("Starting thread for multiplication table of 5...");
+        thread5.start();
+
+
+        MultiplicationThread thread10 = new MultiplicationThread(10);
+        System.out.println("Starting thread for multiplication table of 10...");
+        thread10.start();
+
+
+        try {
+            thread5.join();
+            thread10.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Main thread exiting...");
+    }
+}
+
+
+output:
+
+Starting thread for multiplication table of 5...
+Starting thread for multiplication table of 10...
+Multiplication table for 5:
+Multiplication table for 10:
+5 * 1 = 5
+10 * 1 = 10
+5 * 2 = 10
+10 * 2 = 20
+10 * 3 = 30
+5 * 3 = 15
+10 * 4 = 40
+5 * 4 = 20
+10 * 5 = 50
+5 * 5 = 25
+10 * 6 = 60
+5 * 6 = 30
+5 * 7 = 35
+10 * 7 = 70
+10 * 8 = 80
+5 * 8 = 40
+10 * 9 = 90
+5 * 9 = 45
+10 * 10 = 100
+5 * 10 = 50
+
