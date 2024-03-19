@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        
+        int numOfFactors = calculateNumberOfFactors(number);
+        System.out.println("Number of factors of " + number + ": " + numOfFactors);
+
+
+        System.out.print("Enter the index of the factor to print (1-" + numOfFactors + "): ");
+        int index = scanner.nextInt();
+
+
+        int nthFactor = calculateNthFactor(number, index);
+        System.out.println("The " + index + "th factor of " + number + " is: " + nthFactor);
+
+        scanner.close();
+    }
+
+
+    public static int calculateNumberOfFactors(int number) {
+        int count = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+    public static int calculateNthFactor(int number, int index) {
+        int count = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                count++;
+                if (count == index) {
+                    return i;
+                }
+            }
+        }
+
+        return -1;
+    }
+}
+
+
+output:
+
+Enter a number: 5
+Number of factors of 5: 2
+Enter the index of the factor to print (1-2): 85746526
+The 85746526th factor of 5 is: -1
+
+
