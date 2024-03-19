@@ -1,0 +1,59 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        String number = scanner.nextLine();
+
+        List<String> uniquePermutations = generateUniquePermutations(number);
+
+        System.out.println("Unique permutations of " + number + ":");
+        for (String permutation : uniquePermutations) {
+            System.out.println(permutation);
+        }
+
+        scanner.close();
+    }
+
+    public static List<String> generateUniquePermutations(String number) {
+        List<String> uniquePermutations = new ArrayList<>();
+        char[] digits = number.toCharArray();
+        Arrays.sort(digits); 
+
+        boolean[] used = new boolean[number.length()];
+        generatePermutations(digits, used, "", uniquePermutations);
+
+        return uniquePermutations;
+    }
+
+    private static void generatePermutations(char[] digits, boolean[] used, String permutation, List<String> uniquePermutations) {
+        if (permutation.length() == digits.length) {
+            uniquePermutations.add(permutation);
+            return;
+        }
+
+        for (int i = 0; i < digits.length; i++) {
+            if (used[i] || (i > 0 && digits[i] == digits[i - 1] && !used[i - 1])) {
+                continue;
+            }
+
+            used[i] = true;
+            generatePermutations(digits, used, permutation + digits[i], uniquePermutations);
+            used[i] = false;
+        }
+    }
+}
+
+
+output:
+
+Enter a number: 143
+Unique permutations of 143:
+134
+143
+314
+341
+413
+431
+
