@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int uppercaseCount = 0;
+        int lowercaseCount = 0;
+        int numberCount = 0;
+
+        System.out.println("Enter characters (* to end):");
+
+
+        while (true) {
+            char ch = scanner.next().charAt(0);
+
+            if (ch == '*') {
+                break;
+            } else if (Character.isUpperCase(ch)) {
+                uppercaseCount++;
+            } else if (Character.isLowerCase(ch)) {
+                lowercaseCount++;
+            } else if (Character.isDigit(ch)) {
+                numberCount++;
+            }
+        }
+
+        
+        System.out.println("Uppercase letters: " + uppercaseCount);
+        System.out.println("Lowercase letters: " + lowercaseCount);
+        System.out.println("Numbers: " + numberCount);
+
+        scanner.close();
+    }
+}
+
+
+output:
+
+Enter characters (* to end):
+f
+r
+edd
+fd
+4er4
+*
+Uppercase letters: 0
+Lowercase letters: 4
+Numbers: 1
