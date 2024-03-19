@@ -1,0 +1,23 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int number = 5; 
+
+        int[] result = createArrayWithNumberAndSquare(number);
+
+        System.out.println("Array with the number and its square: " + Arrays.toString(result));
+    }
+
+    public static int[] createArrayWithNumberAndSquare(int number) {
+        int[] array = new int[2];
+        array[0] = number;
+        array[1] = number * number;
+        return array;
+    }
+}
+
+
+output:
+
+Array with the number and its square: [5, 25]
