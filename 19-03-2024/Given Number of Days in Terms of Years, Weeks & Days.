@@ -1,0 +1,22 @@
+.public class Main {
+    public static void main(String[] args) {
+        int totalDays = 1000; 
+
+        int years = totalDays / 365;
+        int remainingDays = totalDays % 365;
+        int weeks = remainingDays / 7;
+        int days = remainingDays % 7;
+
+        System.out.println(totalDays + " days is equivalent to:");
+        System.out.println("Years: " + years);
+        System.out.println("Weeks: " + weeks);
+        System.out.println("Days: " + days);
+    }
+}
+
+output:
+
+1000 days is equivalent to:
+Years: 2
+Weeks: 38
+Days: 4
